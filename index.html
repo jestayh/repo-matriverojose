@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress Code - Verónica & José</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --honey-yellow: #F2C94C;
+            --honey-gold: #D4AF37;
+            --text-dark: #222222;
+            --bg-color: #FFFEF5;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #e0e0e0;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 794px;
+            min-height: 1123px;
+            background-color: var(--bg-color);
+            background-image: url('nanobanana/Gemini_Generated_Image_y4yaypy4yaypy4ya.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 80px 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .content-wrapper {
+            background-color: rgba(255, 255, 245, 0.9);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            font-weight: normal;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4em;
+            margin-bottom: 0.2em;
+            color: var(--honey-gold);
+            text-shadow: 1px 1px 0px white;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            text-align: center;
+            font-size: 1.5em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--honey-yellow);
+            padding-bottom: 20px;
+            display: block;
+        }
+
+        .intro {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2em;
+            color: var(--honey-gold);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--honey-yellow);
+            padding-left: 15px;
+        }
+
+        .guidelines {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .guideline-col {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* INTERACTIVE IMAGE SECTION */
+        .interactive-image-container {
+            width: 100%;
+            position: relative;
+            margin-top: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .ai-image {
+            width: 100%;
+            display: block;
+            transition: opacity 0.5s ease;
+        }
+
+        /* NEW OVERLAY STYLES */
+        .real-photos-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.95);
+            display: flex;
+            flex-direction: row; /* Side by side columns */
+            gap: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            padding: 20px;
+            box-sizing: border-box;
+            pointer-events: none;
+        }
+
+        .photo-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .col-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4em;
+            color: var(--honey-gold);
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid var(--honey-yellow);
+            padding-bottom: 5px;
+        }
+
+        .photo-grid-vertical {
+            flex: 1;
+            overflow-y: auto; /* Scroll vertically */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 10px;
+            padding-right: 5px;
+            align-content: start;
+            scrollbar-width: thin;
+            scrollbar-color: var(--honey-yellow) transparent;
+        }
+        
+        .photo-grid-vertical::-webkit-scrollbar {
+            width: 6px;
+        }
+        .photo-grid-vertical::-webkit-scrollbar-thumb {
+            background-color: var(--honey-yellow);
+            border-radius: 3px;
+        }
+
+        .photo-grid-vertical img {
+            width: 100%;
+            height: auto; /* Natural height */
+            object-fit: contain; /* No cropping */
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: zoom-in;
+            transition: transform 0.2s ease-in-out, z-index 0s 0.2s, box-shadow 0.2s ease-in-out;
+            position: relative;
+            z-index: 1;
+            background-color: #f8f8f8;
+        }
+
+        .photo-grid-vertical img:hover {
+            transform: scale(1.8);
+            z-index: 10;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            cursor: zoom-out;
+        }
+
+        .interactive-image-container:hover .ai-image {
+            opacity: 0.1;
+        }
+        .interactive-image-container:hover .real-photos-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hover-hint {
+            text-align: center;
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* ACTION BUTTONS */
+        .confirmation-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(242, 201, 76, 0.1); /* Light honey background */
+            border-radius: 8px;
+            border: 1px dashed var(--honey-yellow);
+        }
+
+        .confirmation-notice {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3em;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px; /* Pill shape */
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn span {
+            font-size: 1.2em;
+        }
+
+        .btn-primary {
+            background-color: var(--honey-yellow);
+            color: white;
+            border: 2px solid var(--honey-yellow);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--honey-gold);
+            border-color: var(--honey-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--honey-gold);
+            border: 2px solid var(--honey-yellow);
+        }
+
+        .btn-secondary:hover {
+            background-color: #FFF8E1; /* Very light honey tint */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            color: var(--honey-gold);
+            text-shadow: 1px 1px 0px white;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .content-wrapper {
+                background-color: rgba(255, 255, 245, 0.7);
+            }
+            #intro-screen {
+                display: none !important; /* Hide intro when printing */
+            }
+        }
+
+        /* INTRO SCREEN STYLES */
+        body.no-scroll {
+            overflow: hidden; /* Prevent scrolling while on intro */
+        }
+
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e0e0e0;
+            z-index: 9999;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #intro-screen.slide-up {
+            transform: translateY(-100%);
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 100%;
+            max-width: 1000px; /* Limit width on large screens */
+            position: relative;
+            background: white;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        .pdf-embed {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Transparent layer to capture clicks over the PDF */
+        .click-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 80px;
+            background: rgba(0,0,0,0); /* Transparent */
+            transition: background 0.3s;
+        }
+
+        .click-layer:hover {
+            background: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover */
+        }
+
+        .enter-btn-floating {
+            background: var(--honey-yellow);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border: 2px solid white;
+            animation: pulse 2s infinite;
+            pointer-events: none; /* Let click pass to layer */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+            100% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        }
+    </style>
+</head>
+<body class="no-scroll">
+
+    <!-- INTRO SCREEN (Original PDF) -->
+    <div id="intro-screen" onclick="enterSite()">
+        <div class="pdf-container">
+            <!-- Embed PDF with parameters to hide toolbar -->
+            <embed class="pdf-embed" src="Vero%26Jose_spanish-version.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitV" type="application/pdf">
+            
+            <!-- Click Layer -->
+            <div class="click-layer">
+                <div class="enter-btn-floating">Ver Dress Code &rarr;</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <h1>Verónica & José</h1>
+            <div class="subtitle">31 de Enero, 2026 &bull; Valle del Aconcagua</div>
+
+            <div class="intro">
+                <p>¡Estamos muy emocionados de celebrar con ustedes!</p>
+                <p>Dado que celebraremos durante el día en pleno verano, aquí tienen nuestra guía de Dress Code:</p>
+                <strong style="font-size: 1.4em; display: block; margin-top: 10px; color: var(--honey-gold);">Campestre Chic</strong>
+                <p>Elegancia y comodidad para disfrutar del calor y el entorno natural.</p>
+            </div>
+
+            <div class="guidelines">
+                <div class="guideline-col">
+                    <div class="section-title">Para Ellas</div>
+                    <p>La clave es la frescura y el color. Opten por telas ligeras y respirables como lino, gasa, seda, viscosa o algodón.</p>
+                    <ul>
+                        <li>Colores vivos, pasteles o flores. <strong>Vestidos mini, midi o largos.</strong></li>
+                        <li><strong>También son bienvenidas:</strong> Blusas frescas con <strong>shorts o pantalones ligeros y elegantes.</strong></li>
+                        <li><strong>Sí:</strong> Sombreros, lentes, jeans sobrios (un solo color, sin roturas ni desteñidos).</li>
+                        <li><strong>No:</strong> Vestidos de noche pesados, telas sintéticas calurosas o trajes muy ajustados.</li>
+                        <li><strong>Zapatos:</strong> Prefieran tacos gruesos, plataformas o calzado cómodo. ¡Eviten los tacos aguja!</li>
+                    </ul>
+                </div>
+
+                <div class="guideline-col">
+                    <div class="section-title">Para Ellos</div>
+                    <p>Elegancia relajada para disfrutar del día sin sufrir el calor.</p>
+                    <ul>
+                        <li><strong>Parte Superior:</strong> Camisas de lino, algodón u otras telas frescas (manga larga o corta). ¡Las poleras tipo Polo también son bienvenidas!</li>
+                        <li><strong>Parte Inferior:</strong> Pantalones de lino, algodón, jeans sobrios (un solo color, sin roturas ni desteñidos, idealmente claros/delgados) o bermudas de sastre elegantes.</li>
+                        <li><strong>Accesorios:</strong> Sombreros, lentes de sol y chalas de cuero son bienvenidos.</li>
+                        <li><strong>Evitar:</strong> Ternos, chaquetas ni corbatas. Ropa deportiva, shorts de baño o chalas de goma.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE IMAGE SECTION -->
+            <div class="interactive-image-container">
+                <!-- AI Image -->
+                <img src="nanobanana/Gemini_Generated_Image_g8u4big8u4big8u4.png" alt="Inspiración Dress Code" class="ai-image">
+                
+                <!-- Hidden Real Photos Section (Reveals on Hover) -->
+                <div class="real-photos-overlay">
+                    
+                    <!-- Column for Women -->
+                    <div class="photo-column">
+                        <div class="col-label">Para Ellas</div>
+                        <div class="photo-grid-vertical">
+                            <img src="Dress%20code/Mujer/ELSIE_WRAP_DRESS_600x600.jpg" alt="Vestido cruzado">
+                            <img src="Dress%20code/Mujer/02f6ba75a0a763fb871d1f39bd0a42c3.jpg" alt="Look Mujer">
+                            <img src="Dress%20code/Mujer/160731167465a61054bb3f92f8ff8f44e6932497e4.jpeg" alt="Look Mujer">
+                            <img src="Dress%20code/Mujer/18817837_11a3c1fb-98c8-4f27-b138-313c30e975eb_1200x.jpg" alt="Look Mujer">
+                            <img src="Dress%20code/Mujer/7b3f458398ee59964fecd28ae62a5fde.jpg" alt="Look Mujer">
+                            <img src="Dress%20code/Mujer/e2df446a93be3e006cb48521a9207aab.jpg" alt="Look Mujer">
+                        </div>
+                    </div>
+
+                    <!-- Column for Men -->
+                    <div class="photo-column">
+                        <div class="col-label">Para Ellos</div>
+                        <div class="photo-grid-vertical">
+                            <img src="Dress%20code/Hombre/linen-short-for-men-sand.jpg" alt="Bermuda Lino">
+                            <img src="Dress%20code/Hombre/Floral-Print-Shirt-with-Dress-Pants-Casual-Summer-Wedding-Outfit-650x813.jpg" alt="Camisa Floral">
+                            <img src="Dress%20code/Hombre/a-beach-wedding-guest-look-with-a-floral-print-shirt-white-linen-pants-brown-loafers-and-necklaces.jpg" alt="Look Lino Completo">
+                            <img src="Dress%20code/Hombre/Shortenlinbeigehomme_1600x.png" alt="Short Lino">
+                            <img src="Dress%20code/Hombre/11b8934d32f19b80358d21244d05d214.jpg" alt="Look Hombre">
+                            <img src="Dress%20code/Hombre/15a665ad3481fe1dbc3ace168759a36a.jpg" alt="Look Hombre">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="hover-hint">Pasa el mouse sobre la imagen para ver fotos reales de referencia</div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="confirmation-section">
+                <p class="confirmation-notice">Es muy importante para nosotros contar con tu presencia.<br>Por favor, confirma tu asistencia en el siguiente enlace:</p>
+                
+                <div class="action-buttons">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Calle+Santa+Margarita+s%2Fn,+El+Asiento,+San+Felipe,+Chile" class="btn btn-secondary" target="_blank">
+                        <span>📍</span> Ver Ubicación
+                    </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfaqjOhXd88qfc70kecbFfLKFZEd6k_2oFjEjV1BddfD91CvA/viewform?usp=header" class="btn btn-primary" target="_blank">
+                        <span>✅</span> Confirmar Asistencia
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer">
+                ¡Nos vemos en el Valle!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function enterSite() {
+            const intro = document.getElementById('intro-screen');
+            const body = document.body;
+            
+            // Trigger animation
+            intro.classList.add('slide-up');
+            
+            // Enable scrolling on main body
+            body.classList.remove('no-scroll');
+            
+            // Optional: Remove from DOM after animation to free memory
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 800);
+        }
+    </script>
+</body>
+</html>
