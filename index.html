@@ -440,6 +440,33 @@
         <img src="invitacion_portada.jpg" alt="Portada Invitación" class="full-image">
     </div>
 
+    <!-- INFO WIDGET SECTION (Countdown & Weather) -->
+    <div id="info-widget-section" style="width: 100%; max-width: 794px; margin-bottom: 40px; display: flex; gap: 20px; flex-wrap: wrap;">
+        
+        <!-- Countdown Widget -->
+        <div class="widget-card" style="flex: 1; min-width: 300px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; border: 1px solid var(--honey-yellow);">
+            <h3 style="font-family: 'Cormorant Garamond', serif; color: var(--honey-gold); margin-bottom: 10px; margin-top: 0;">Faltan</h3>
+            <div id="countdown" style="font-family: 'Montserrat', sans-serif; font-size: 1.5em; font-weight: bold; color: var(--text-dark);">
+                Cargando...
+            </div>
+            <div style="font-size: 0.8em; color: #888; margin-top: 5px;">para el Gran Día</div>
+        </div>
+
+        <!-- Weather Widget -->
+        <div class="widget-card" style="flex: 1; min-width: 300px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; border: 1px solid var(--honey-yellow);">
+            <h3 style="font-family: 'Cormorant Garamond', serif; color: var(--honey-gold); margin-bottom: 10px; margin-top: 0;">Clima Esperado</h3>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 15px;">
+                <span style="font-size: 2.5em;">☀️</span>
+                <div style="text-align: left;">
+                    <div style="font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 1.2em;">32°C / 14°C</div>
+                    <div style="font-size: 0.9em; color: #666;">Soleado & Caluroso</div>
+                </div>
+            </div>
+            <div style="font-size: 0.7em; color: #999; margin-top: 8px; font-style: italic;">*Basado en histórico histórico San Felipe</div>
+        </div>
+
+    </div>
+
     <!-- SECTION 2: CIRCULAR (Dress Code) -->
     <div id="section-circular" class="card-sheet">
         <div class="content-wrapper">
@@ -532,15 +559,15 @@
     </div>
 
     <!-- SECTION 3: OUTRO (Página 2 de Invitación) -->
-    <div id="section-outro" class="card-sheet">
-        <img src="invitacion_portada_1.jpg" alt="Cierre Invitación" class="full-image">
+    <div id="section-outro" class="card-sheet" style="min-height: auto; height: auto;">
+        <img src="invitacion_portada_1.jpg" alt="Cierre Invitación" class="full-image" style="height: auto;">
     </div>
 
     <!-- SECTION 4: SPOTIFY PLAYLIST -->
-    <div id="section-spotify" class="card-sheet" style="min-height: auto; padding: 40px;">
-        <div class="content-wrapper" style="border: none; box-shadow: none; background-color: transparent;">
-            <p class="confirmation-notice" style="margin-bottom: 20px;">¡Ayúdanos a crear la banda sonora de nuestra fiesta!</p>
-            <p class="confirmation-notice">Agrega tus canciones favoritas a nuestra playlist compartida de Spotify:</p>
+    <div id="section-spotify" class="card-sheet" style="min-height: auto; padding: 60px; background-image: url('nanobanana/Gemini_Generated_Image_y4yaypy4yaypy4ya.png'); background-size: cover; background-position: bottom;">
+        <div class="content-wrapper" style="border: 1px solid rgba(212, 175, 55, 0.3); background-color: rgba(255, 255, 245, 0.9);">
+            <p class="confirmation-notice" style="margin-bottom: 20px; font-family: 'Cormorant Garamond', serif; font-size: 1.5em; color: var(--honey-gold); font-weight: bold;">¡Ayúdanos a crear la banda sonora de nuestra fiesta!</p>
+            <p class="confirmation-notice" style="font-family: 'Montserrat', sans-serif;">Agrega tus canciones favoritas a nuestra playlist compartida de Spotify:</p>
             <div class="action-buttons" style="margin-top: 30px;">
                 <a href="https://open.spotify.com/playlist/6QdU3tUXzTkoBlmwzQfNp8?si=c0BdEdRRT06adIe-gZNsYA" class="btn btn-primary" target="_blank">
                     <span>🎧</span> Añadir Canciones a la Playlist
@@ -548,6 +575,44 @@
             </div>
         </div>
     </div>
+    <script>
+        function enterSite() {
+            const intro = document.getElementById('intro-screen');
+            const mainContent = document.querySelector('.container');
+            
+            // Trigger animation
+            intro.classList.add('slide-up');
+            
+            // Show main content
+            mainContent.style.display = 'block';
+            
+            // Allow scrolling on main body
+            document.body.style.overflow = 'auto';
+            
+            // Optional: Remove from DOM after animation to free memory
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 800);
+        }
 
+        // COUNTDOWN LOGIC
+        const weddingDate = new Date("January 31, 2026 11:30:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "¡Llegó el día!";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
