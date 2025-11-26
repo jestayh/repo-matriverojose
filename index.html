@@ -15,29 +15,88 @@
             --bg-color: #FFFEF5;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #e0e0e0;
             color: var(--text-dark);
             margin: 0;
-            padding: 20px;
+            padding: 0;
             line-height: 1.6;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
-        .container {
-            width: 794px;
-            min-height: 1123px;
+        /* NAVIGATION BAR */
+        .navbar {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 30px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--honey-yellow);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: var(--honey-yellow);
+            color: white;
+        }
+
+        /* SHARED CARD STYLE FOR ALL SECTIONS */
+        .card-sheet {
+            width: 100%;
+            max-width: 794px; /* A4 Width */
+            min-height: 1123px; /* A4 Height */
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px; /* Consistent corners */
+            overflow: hidden; /* For image overflow */
+            scroll-margin-top: 100px; /* Offset for sticky nav */
+        }
+
+        /* IMAGE SECTIONS (Intro & Outro) */
+        .full-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensure full image is visible */
+            display: block;
+            background-color: #f8f8f8; /* Background if image doesn't fill */
+        }
+
+        /* CIRCULAR SECTION SPECIFICS */
+        #section-circular {
             background-color: var(--bg-color);
             background-image: url('nanobanana/Gemini_Generated_Image_y4yaypy4yaypy4ya.png');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             padding: 80px 60px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
-            box-sizing: border-box;
         }
 
         .content-wrapper {
@@ -46,7 +105,7 @@
             border-radius: 8px;
             border: 1px solid rgba(212, 175, 55, 0.3);
         }
-
+        
         h1, h2, h3 {
             text-align: center;
             font-weight: normal;
@@ -117,7 +176,7 @@
             transition: opacity 0.5s ease;
         }
 
-        /* NEW OVERLAY STYLES */
+        /* OVERLAY STYLES */
         .real-photos-overlay {
             position: absolute;
             top: 0;
@@ -209,13 +268,13 @@
             margin-top: 10px;
             font-style: italic;
         }
-
+        
         /* ACTION BUTTONS */
         .confirmation-section {
             text-align: center;
             margin-top: 50px;
             padding: 20px;
-            background-color: rgba(242, 201, 76, 0.1); /* Light honey background */
+            background-color: rgba(242, 201, 76, 0.1);
             border-radius: 8px;
             border: 1px dashed var(--honey-yellow);
         }
@@ -238,7 +297,7 @@
         .btn {
             text-decoration: none;
             padding: 15px 30px;
-            border-radius: 50px; /* Pill shape */
+            border-radius: 50px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             text-transform: uppercase;
@@ -274,7 +333,7 @@
         }
 
         .btn-secondary:hover {
-            background-color: #FFF8E1; /* Very light honey tint */
+            background-color: #FFF8E1;
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
@@ -292,119 +351,96 @@
             body {
                 background: white;
                 padding: 0;
+                overflow: visible !important; /* Allow printing full content */
             }
-            .container {
+            .card-sheet {
                 box-shadow: none;
                 margin: 0;
                 width: 100%;
                 height: 100%;
             }
+            #section-circular {
+                padding: 40px;
+            }
             .content-wrapper {
                 background-color: rgba(255, 255, 245, 0.7);
             }
-            #intro-screen {
-                display: none !important; /* Hide intro when printing */
+        }
+
+        /* RESPONSIVE MEDIA QUERIES */
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+                background-color: #333; /* Dark background for contrast on mobile */
             }
-        }
 
-        /* INTRO SCREEN STYLES */
-        body.no-scroll {
-            overflow: hidden; /* Prevent scrolling while on intro */
-        }
+            .card-sheet {
+                width: 95%;
+                min-height: auto;
+                height: auto;
+                margin-bottom: 20px; /* Reduce space between sections */
+            }
 
-        #intro-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #e0e0e0;
-            z-index: 9999;
-            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+            #section-circular {
+                padding: 40px 20px; /* Reduce padding */
+            }
 
-        #intro-screen.slide-up {
-            transform: translateY(-100%);
-        }
+            .content-wrapper {
+                padding: 20px;
+            }
 
-        .pdf-container {
-            width: 100%;
-            height: 100%;
-            max-width: 1000px; /* Limit width on large screens */
-            position: relative;
-            background: white;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
-        }
+            h1 {
+                font-size: 3em;
+            }
 
-        .pdf-embed {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+            .subtitle {
+                font-size: 1.2em;
+            }
 
-        /* Transparent layer to capture clicks over the PDF */
-        .click-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            padding-bottom: 80px;
-            background: rgba(0,0,0,0); /* Transparent */
-            transition: background 0.3s;
-        }
+            .intro {
+                font-size: 1em;
+            }
 
-        .click-layer:hover {
-            background: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover */
-        }
+            .section-title {
+                font-size: 1.5em;
+            }
 
-        .enter-btn-floating {
-            background: var(--honey-yellow);
-            color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            font-size: 1.2em;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            border: 2px solid white;
-            animation: pulse 2s infinite;
-            pointer-events: none; /* Let click pass to layer */
-        }
+            .action-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+            }
 
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-            100% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+            .btn {
+                width: 100%;
+                justify-content: center;
+                box-sizing: border-box;
+                padding: 12px 20px;
+                font-size: 0.9em;
+            }
+            
+            .photo-grid-vertical img:hover {
+                transform: scale(1.5); /* Less zoom on mobile to fit screen */
+            }
         }
     </style>
 </head>
-<body class="no-scroll">
+<body>
 
-    <!-- INTRO SCREEN (Original PDF) -->
-    <div id="intro-screen" onclick="enterSite()">
-        <div class="pdf-container">
-            <!-- Embed PDF with parameters to hide toolbar -->
-            <embed class="pdf-embed" src="Vero%26Jose_spanish-version.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitV" type="application/pdf">
-            
-            <!-- Click Layer -->
-            <div class="click-layer">
-                <div class="enter-btn-floating">Ver Dress Code &rarr;</div>
-            </div>
-        </div>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <a href="#section-intro" class="nav-link">Inicio</a>
+        <a href="#section-circular" class="nav-link">Dress Code</a>
+        <a href="#section-confirmar" class="nav-link">Confirmar</a>
+    </nav>
+
+    <!-- SECTION 1: INTRO (Portada) -->
+    <div id="section-intro" class="card-sheet">
+        <img src="invitacion_portada.jpg" alt="Portada Invitación" class="full-image">
     </div>
 
-    <div class="container">
+    <!-- SECTION 2: CIRCULAR (Dress Code) -->
+    <div id="section-circular" class="card-sheet">
         <div class="content-wrapper">
             <h1>Verónica & José</h1>
             <div class="subtitle">31 de Enero, 2026 &bull; Valle del Aconcagua</div>
@@ -443,22 +479,17 @@
 
             <!-- INTERACTIVE IMAGE SECTION -->
             <div class="interactive-image-container">
-                <!-- AI Image -->
                 <img src="nanobanana/Gemini_Generated_Image_g8u4big8u4big8u4.png" alt="Inspiración Dress Code" class="ai-image">
-                
-                <!-- Hidden Real Photos Section (Reveals on Hover) -->
                 <div class="real-photos-overlay">
-                    
-                    <!-- Column for Women -->
                     <div class="photo-column">
                         <div class="col-label">Para Ellas</div>
                         <div class="photo-grid-vertical">
                             <img src="Dress%20code/Mujer/ELSIE_WRAP_DRESS_600x600.jpg" alt="Vestido cruzado">
                             <img src="Dress%20code/Mujer/02f6ba75a0a763fb871d1f39bd0a42c3.jpg" alt="Look Mujer">
-                            <img src="Dress%20code/Mujer/160731167465a61054bb3f92f8ff8f44e6932497e4.jpeg" alt="Look Mujer">
+                            <img src="Dress%20code/Mujer/160731167465a6105bb3f92f8ff8f44e6932497e4.jpeg" alt="Look Mujer">
                             <img src="Dress%20code/Mujer/18817837_11a3c1fb-98c8-4f27-b138-313c30e975eb_1200x.jpg" alt="Look Mujer">
                             <img src="Dress%20code/Mujer/7b3f458398ee59964fecd28ae62a5fde.jpg" alt="Look Mujer">
-                            <img src="Dress%20code/Mujer/e2df446a93be3e006cb48521a9207aab.jpg" alt="Look Mujer">
+                            <img src="Dress%20code/Mujer/835f04ad7a0ed0c2c89fcb0dfda12d29.jpg" alt="Look Mujer">
                         </div>
                     </div>
 
@@ -480,7 +511,7 @@
             <div class="hover-hint">Pasa el mouse sobre la imagen para ver fotos reales de referencia</div>
 
             <!-- ACTION BUTTONS -->
-            <div class="confirmation-section">
+            <div id="section-confirmar" class="confirmation-section">
                 <p class="confirmation-notice">Es muy importante para nosotros contar con tu presencia.<br>Por favor, confirma tu asistencia en el siguiente enlace:</p>
                 
                 <div class="action-buttons">
@@ -499,22 +530,10 @@
         </div>
     </div>
 
-    <script>
-        function enterSite() {
-            const intro = document.getElementById('intro-screen');
-            const body = document.body;
-            
-            // Trigger animation
-            intro.classList.add('slide-up');
-            
-            // Enable scrolling on main body
-            body.classList.remove('no-scroll');
-            
-            // Optional: Remove from DOM after animation to free memory
-            setTimeout(() => {
-                intro.style.display = 'none';
-            }, 800);
-        }
-    </script>
+    <!-- SECTION 3: OUTRO (Página 2 de Invitación) -->
+    <div id="section-outro" class="card-sheet">
+        <img src="invitacion_portada_1.jpg" alt="Cierre Invitación" class="full-image">
+    </div>
+
 </body>
 </html>
