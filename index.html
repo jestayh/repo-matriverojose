@@ -499,22 +499,24 @@
             }
 
             .real-photos-overlay {
-                flex-direction: column;
-                gap: 15px;
-                padding: 12px;
-                overflow-y: auto;
-                max-height: 600px;
+                flex-direction: row;
+                gap: 10px;
+                padding: 10px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                max-height: 400px;
             }
 
             .photo-column {
                 min-height: auto;
-                width: 100%;
+                min-width: 48%;
+                flex-shrink: 0;
             }
 
             .photo-grid-vertical {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-                max-height: 250px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+                max-height: 350px;
             }
 
             .hover-hint {
