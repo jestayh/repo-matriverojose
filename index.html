@@ -690,17 +690,65 @@
             </div>
             <div class="hover-hint">Pasa el mouse sobre la imagen para ver fotos reales de referencia</div>
 
-            <!-- ACTION BUTTONS -->
-            <div id="section-confirmar" class="confirmation-section">
-                <p class="confirmation-notice">Es muy importante para nosotros contar con tu presencia. Aquí te dejamos los detalles para que puedas confirmar tu asistencia y ver dónde será la celebración:</p>
+            <!-- INFORMACIÓN IMPORTANTE CONSOLIDADA -->
+            <div id="section-confirmar" style="margin-top: 40px;">
+                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3em, 3.5vw, 1.8em); color: var(--honey-gold); text-align: center; margin-top: 0; margin-bottom: 30px;">📋 Información Importante</h2>
 
-                <div class="action-buttons">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfaqjOhXd88qfc70kecbFfLKFZEd6k_2oFjEjV1BddfD91CvA/viewform?usp=header" class="btn btn-primary" target="_blank">
-                        <span>✅</span> Confirmar Asistencia
-                    </a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Calle+Santa+Margarita+s%2Fn,+El+Asiento,+San+Felipe,+Chile" class="btn btn-secondary" target="_blank">
-                        <span>📍</span> Ver Ubicación
-                    </a>
+                <!-- UBICACIÓN Y LOGÍSTICA -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
+
+                    <!-- TARJETA UBICACIÓN -->
+                    <div style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid var(--honey-yellow);">
+                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.2em; color: var(--honey-gold); margin: 0 0 15px 0; font-weight: bold;">📍 Ubicación del Evento</p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #333; margin: 8px 0;"><strong>Lugar:</strong> Camping Los Algarrobos</p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #333; margin: 8px 0;"><strong>Dirección:</strong> Calle Santa Margarita s/n, El Asiento, San Felipe</p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #666; margin: 15px 0 0 0; border-top: 1px solid #ddd; padding-top: 12px;"><strong>Desde Santiago:</strong> ~130 km | ~2 horas</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Calle+Santa+Margarita+s%2Fn,+El+Asiento,+San+Felipe,+Chile" class="btn btn-secondary" target="_blank" style="margin-top: 15px; width: 100%; box-sizing: border-box;">
+                            <span>🗺️</span> Ver en Google Maps
+                        </a>
+                    </div>
+
+                    <!-- DRESS CODE RESUMEN -->
+                    <div style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid var(--honey-yellow);">
+                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.2em; color: var(--honey-gold); margin: 0 0 15px 0; font-weight: bold;">👗 Dress Code: Campestre Chic</p>
+                        <ul style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #333; margin: 0; padding-left: 20px;">
+                            <li>Telas ligeras y frescas (lino, algodón, seda)</li>
+                            <li>Colores vivos, pasteles o flores</li>
+                            <li>Sombreros, lentes de sol recomendados</li>
+                            <li>Zapatos cómodos (¡evita tacos aguja!)</li>
+                            <li style="margin-top: 8px;"><a href="#section-circular" style="color: var(--honey-gold); text-decoration: underline;">Ver detalles completos →</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- CAMPING INFO -->
+                    <div style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid var(--honey-yellow);">
+                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.2em; color: var(--honey-gold); margin: 0 0 15px 0; font-weight: bold;">⛺ ¿Quieres Acampar?</p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #333; margin: 8px 0;"><strong>Precio:</strong> $5.000 por persona</p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #333; margin: 8px 0;"><strong>Incluye:</strong> Noche del 31 de enero al 1 de febrero</p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #333; margin: 8px 0;"><strong>Salida:</strong> 9:30 AM del día siguiente</p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #666; margin: 12px 0 0 0; padding-top: 12px; border-top: 1px solid #ddd; font-style: italic;">💡 Trae: Bolsa de dormir, linterna, artículos de higiene</p>
+                    </div>
+                </div>
+
+                <!-- RECOMENDACIONES DE CLIMA -->
+                <div style="background: rgba(242, 201, 76, 0.1); padding: 20px; border-radius: 8px; border: 1px solid var(--honey-yellow); margin-bottom: 30px;">
+                    <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95em; color: #333; margin: 0;"><strong style="color: var(--honey-gold);">⚠️ Recomendaciones para el día:</strong></p>
+                    <ul style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #666; margin: 10px 0 0 20px; padding: 0;">
+                        <li>Traer protector solar SPF 50+ (es imprescindible)</li>
+                        <li>Mantente hidratado todo el día - lleva agua</li>
+                        <li>Sombreros y gafas de sol altamente recomendados</li>
+                        <li>Calzado cómodo para caminar en terreno natural</li>
+                    </ul>
+                </div>
+
+                <!-- CALL TO ACTION -->
+                <div class="confirmation-section">
+                    <p class="confirmation-notice">Es muy importante para nosotros contar con tu presencia. Por favor confirma tu asistencia:</p>
+                    <div class="action-buttons">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfaqjOhXd88qfc70kecbFfLKFZEd6k_2oFjEjV1BddfD91CvA/viewform?usp=header" class="btn btn-primary" target="_blank">
+                            <span>✅</span> Confirmar Asistencia
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -749,10 +797,32 @@
                 </div>
             </div>
 
-            <!-- AVISO PISCINA -->
+            <!-- OPCIONES DE CAMPING Y PISCINA -->
             <div style="background: linear-gradient(135deg, rgba(242, 201, 76, 0.15) 0%, rgba(212, 175, 55, 0.15) 100%); padding: 25px; border-radius: 8px; border: 2px solid var(--honey-yellow); margin-top: 40px;">
-                <p style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1em, 3vw, 1.3em); color: var(--honey-gold); text-align: center; margin: 0 0 15px 0; font-weight: bold;">🏊 Piscina del Camping Los Algarrobos</p>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: clamp(0.9em, 2.5vw, 1em); text-align: center; color: #333; margin: 0;">Si deseas disfrutar de la piscina del <a href="https://losalgarrobos.cl/" target="_blank" style="color: var(--honey-gold); text-decoration: underline;">camping Los Algarrobos</a> durante la celebración, el valor de acceso es <strong>$5.000</strong> por persona en el lugar.</p>
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1em, 3vw, 1.3em); color: var(--honey-gold); text-align: center; margin: 0 0 20px 0; font-weight: bold;">🏊 Camping Los Algarrobos - Opciones Adicionales</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                    <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid var(--honey-yellow);">
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; margin: 0 0 5px 0;"><strong style="color: var(--honey-gold);">🏊 Piscina Sábado</strong></p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.85em; color: #666; margin: 0;">$5.000 por persona (en el lugar)</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid var(--honey-yellow);">
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; margin: 0 0 5px 0;"><strong style="color: var(--honey-gold);">☀️ Piscina Domingo</strong></p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.85em; color: #666; margin: 0;">$7.000 por persona (adicional)</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid var(--honey-yellow);">
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; margin: 0 0 5px 0;"><strong style="color: var(--honey-gold);">⛺ Acampar Noche</strong></p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.85em; color: #666; margin: 0;">$5.000 por persona</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; padding: 15px 0; border-top: 1px solid var(--honey-yellow);">
+                    <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #333; margin: 0 0 15px 0;"><strong>Máximo completo: $17.000</strong> (Piscina 2 días + 1 noche acampar)</p>
+                    <a href="https://losalgarrobos.cl/" class="btn btn-primary" target="_blank">
+                        <span>🔗</span> Reservar en Los Algarrobos
+                    </a>
+                    <p style="font-family: 'Montserrat', sans-serif; font-size: 0.75em; color: #999; margin-top: 10px; margin-bottom: 0;">Dirígete al sitio web del camping para más información y reservas</p>
+                </div>
             </div>
 
         </div>
