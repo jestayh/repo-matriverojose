@@ -1003,8 +1003,39 @@
             }
         }, 1000);
 
-        // WEATHER FORECAST LOGIC
+        // WEATHER FORECAST LOGIC - Intenta Meteored primero, luego Open-Meteo como fallback
         function updateWeatherForecast() {
+            // Primero intenta obtener de Meteored
+            fetchMeteored();
+        }
+
+        function fetchMeteored() {
+            fetch('https://www.meteored.cl/tiempo-en_San+Felipe-America+Sur-Chile-Valparaiso--1-18232.html')
+                .then(response => response.text())
+                .then(html => {
+                    // Buscar el patrón para enero 31 en Meteored
+                    // Patterns posibles: "31" seguido de temperaturas
+                    const regex = /31.*?(\d{1,2})°.*?(\d{1,2})°/s;
+                    const match = html.match(regex);
+
+                    if (match && match[1] && match[2]) {
+                        const maxTemp = parseInt(match[1]);
+                        const minTemp = parseInt(match[2]);
+                        console.log("Pronóstico de Meteored encontrado: " + maxTemp + "°C / " + minTemp + "°C");
+                        updateWeatherWidget(maxTemp, minTemp, null, true, "Meteored");
+                    } else {
+                        // Si no encuentra en Meteored, usa Open-Meteo
+                        console.log("No se encontró pronóstico en Meteored, usando Open-Meteo");
+                        fetchOpenMeteo();
+                    }
+                })
+                .catch(error => {
+                    console.log("Error al leer Meteored, intentando Open-Meteo:", error);
+                    fetchOpenMeteo();
+                });
+        }
+
+        function fetchOpenMeteo() {
             const weddingDateObj = new Date(2026, 0, 31); // 31 de enero 2026
             const formattedDate = weddingDateObj.toISOString().split('T')[0]; // "2026-01-31"
 
@@ -1026,7 +1057,7 @@
                             const minTemp = Math.round(data.daily.temperature_2m_min[dateIndex]);
                             const weatherCode = data.daily.weather_code[dateIndex];
 
-                            updateWeatherWidget(maxTemp, minTemp, weatherCode, true);
+                            updateWeatherWidget(maxTemp, minTemp, weatherCode, true, "Open-Meteo");
                         }
                     }
                 })
@@ -1035,7 +1066,7 @@
                 });
         }
 
-        function updateWeatherWidget(maxTemp, minTemp, weatherCode, isRealForecast = false) {
+        function updateWeatherWidget(maxTemp, minTemp, weatherCode, isRealForecast = false, source = null) {
             const weatherWidget = document.querySelector('[data-weather-widget]');
             const weatherNote = document.getElementById('weather-note');
 
@@ -1077,8 +1108,15 @@
             `;
 
             if (isRealForecast) {
-                weatherNote.textContent = '*Pronóstico oficial meteorológico';
-                weatherNote.style.color = '#4CAF50';
+                if (source === "Meteored") {
+                    weatherNote.innerHTML = '✓ Pronóstico oficial Meteored.cl | <a href="https://www.meteored.cl/tiempo-en_San+Felipe-America+Sur-Chile-Valparaiso--1-18232.html" target="_blank" style="color: var(--honey-gold); text-decoration: underline;">Ver pronóstico →</a>';
+                } else if (source === "Open-Meteo") {
+                    weatherNote.innerHTML = '✓ Pronóstico oficial Open-Meteo | <a href="https://www.meteored.cl/tiempo-en_San+Felipe-America+Sur-Chile-Valparaiso--1-18232.html" target="_blank" style="color: var(--honey-gold); text-decoration: underline;">Ver pronóstico →</a>';
+                } else {
+                    weatherNote.textContent = '✓ Pronóstico oficial meteorológico';
+                }
+                weatherNote.style.color = '#25a844';
+                weatherNote.style.fontWeight = 'bold';
             }
         }
 
