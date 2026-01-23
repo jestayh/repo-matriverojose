@@ -911,16 +911,53 @@
             </div>
             
             <!-- CARPOOL FORM -->
-            <div style="margin-top: 40px; text-align: center;">
-                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2em, 3vw, 1.6em); color: var(--honey-gold); text-align: center; margin-bottom: 20px;">🚐 ¿Viajamos Juntos?</h3>
-                <p style="font-family: 'Montserrat', sans-serif; text-align: center; font-size: 0.95em; color: #666; margin-bottom: 30px;">Si ofreces un auto con cupos disponibles o buscas viajar compartido, regístrate aquí. La gente se contactará directamente contigo:</p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1Y0-3_ht0AvLE3obJzilaY4xUqIXEr4aZw9qzLjq5nKcHkw/viewform" target="_blank" style="text-decoration: none; background-color: var(--honey-yellow); color: white; padding: 12px 30px; border-radius: 6px; text-align: center; font-weight: 600; font-size: 1em; display: inline-block; transition: all 0.3s;">Registrarme en el Formulario</a>
-            </div>
+            <div style="margin-top: 40px;">
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2em, 3vw, 1.6em); color: var(--honey-gold); text-align: center; margin-bottom: 30px;">🚐 ¿Viajamos Juntos?</h3>
 
-            <!-- CARPOOL RESPONSES TABLE -->
-            <div style="margin-top: 60px;">
-                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2em, 3vw, 1.6em); color: var(--honey-gold); text-align: center; margin-bottom: 20px;">👥 Personas que Buscan / Ofrecen Auto</h3>
-                <p style="font-family: 'Montserrat', sans-serif; text-align: center; font-size: 0.95em; color: #666; margin-bottom: 20px;">Aquí puedes ver quién busca o ofrece transporte compartido. ¡Contacta directamente!</p>
+                <!-- OPCIONES DE COORDINACIÓN -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
+
+                    <!-- OPCIÓN 1: AUTO DESDE SANTIAGO -->
+                    <div style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid var(--honey-yellow);">
+                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1em; color: var(--honey-gold); margin: 0 0 15px 0; font-weight: bold;">🚗 Ofrezco Auto desde Santiago</p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #666; margin: 0 0 15px 0;">¿Tienes cupos disponibles en tu auto? Regístrate para que otros invitados se coordinen contigo.</p>
+                        <ul style="font-family: 'Montserrat', sans-serif; font-size: 0.85em; color: #666; margin: 0 0 15px 0; padding-left: 20px;">
+                            <li>Comparte tu nombre y teléfono</li>
+                            <li>Indica cuántos cupos tienes</li>
+                            <li>Los interesados se contactarán contigo</li>
+                        </ul>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1Y0-3_ht0AvLE3obJzilaY4xUqIXEr4aZw9qzLjq5nKcHkw/viewform" target="_blank" style="text-decoration: none; background-color: var(--honey-yellow); color: white; padding: 10px 20px; border-radius: 6px; text-align: center; font-weight: 600; font-size: 0.9em; display: inline-block; width: 100%; box-sizing: border-box;">
+                            Registrar mi Auto
+                        </a>
+                    </div>
+
+                    <!-- OPCIÓN 2: BUS + TAXI COMPARTIDO -->
+                    <div style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid var(--honey-yellow);">
+                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1em; color: var(--honey-gold); margin: 0 0 15px 0; font-weight: bold;">🚌 Viajo en Bus + Taxi desde San Felipe</p>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #666; margin: 0 0 15px 0;">¿Viajas en bus? Coordina aquí para compartir taxi con otros invitados.</p>
+                        <ul style="font-family: 'Montserrat', sans-serif; font-size: 0.85em; color: #666; margin: 0 0 15px 0; padding-left: 20px;">
+                            <li>Indica a qué hora llegas a San Felipe</li>
+                            <li>Comparte tu contacto</li>
+                            <li>Coordina con otros invitados</li>
+                            <li>Ahorra $6.000 / taxi ÷ número de personas</li>
+                        </ul>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1Y0-3_ht0AvLE3obJzilaY4xUqIXEr4aZw9qzLjq5nKcHkw/viewform" target="_blank" style="text-decoration: none; background-color: var(--honey-yellow); color: white; padding: 10px 20px; border-radius: 6px; text-align: center; font-weight: 600; font-size: 0.9em; display: inline-block; width: 100%; box-sizing: border-box;">
+                            Coordinar Taxi Compartido
+                        </a>
+                    </div>
+                </div>
+
+                <!-- INFORMACIÓN IMPORTANTE -->
+                <div style="background: rgba(242, 201, 76, 0.1); padding: 20px; border-radius: 8px; border: 1px solid var(--honey-yellow); margin-bottom: 30px;">
+                    <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #333; margin: 0;"><strong style="color: var(--honey-gold);">💡 Cómo funciona:</strong></p>
+                    <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; color: #666; margin: 10px 0 0 0;">Una vez registrado/a, aparecerás en la tabla de abajo. <strong>Los interesados se contactarán directamente contigo</strong> por teléfono o WhatsApp. Así pueden coordinar horarios, puntos de encuentro y dividir costos.</p>
+                </div>
+
+                <!-- TABLA DE RESPUESTAS -->
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1em, 3vw, 1.4em); color: var(--honey-gold); text-align: center; margin-bottom: 15px;">👥 Personas que Buscan / Ofrecen Transporte</h3>
+                <p style="font-family: 'Montserrat', sans-serif; text-align: center; font-size: 0.9em; color: #666; margin-bottom: 20px;">Contacta directamente con quien te interese para coordinar el viaje:</p>
+
+                <!-- CARPOOL RESPONSES TABLE -->
                 <iframe src="https://docs.google.com/spreadsheets/d/1XNfnA8lpPVq7dkKOm-sRdpZwiWOBbByXd7e1Fs8sp1I/edit?resourcekey=&gid=2123451261#gid=2123451261&fvid=1716438230" width="100%" height="500" frameborder="0" style="border-radius: 8px;">Cargando datos…</iframe>
             </div>
         </div>
